@@ -1,61 +1,70 @@
-# Sprint project 02
-> Home Credit Default Risk
+# Credit Risk Classification
 
-## The Business problem
+This project addresses a binary classification problem: predicting whether an applicant for a home credit loan will default on payments. The goal is to support financial institutions in making informed lending decisions using machine learning.
 
-This is a binary Classification task: we want to predict whether the person applying for a home credit will be able to repay their debt or not. Our model will have to predict a 1 indicating the client will have payment difficulties: he/she will have late payment of more than X days on at least one of the first Y installments of the loan in our sample, 0 in all other cases.
+## 🧠 Problem Statement
 
-We will use [Area Under the ROC Curve](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc?hl=es_419) as the evaluation metric, so our models will have to return the probabilities that a loan is not paid for each input data.
+Given structured customer data, the model predicts a target variable:
 
-## About the data
+- `1` if the client is likely to have payment difficulties.
+- `0` otherwise.
 
-The original dataset is composed of multiple files with different information about loans taken. In this project, we will work exclusively with the primary files: `application_train_aai.csv` and `application_test_aai.csv`.
+The project uses **Area Under the ROC Curve (AUC-ROC)** as the evaluation metric, with the model returning the probability of default for each applicant.
 
-You don't have to worry about downloading the data, it will be automatically downloaded from the `AnyoneAI - Sprint Project 02.ipynb` notebook in `Section 1 - Getting the data`.
+## 📊 Dataset
 
-## Technical aspects
+The dataset includes two main files:
 
-To develop this Machine Learning model you will have to primary interact with the Jupyter notebook provided, called `AnyoneAI - Sprint Project 02.ipynb`. This notebook will guide you through all the steps you have to follow and the code you have to complete in the different parts of the project, also marked with a `TODO` comment.
+- `application_train_aai.csv`: labeled training data.
+- `application_test_aai.csv`: unlabeled test data.
 
-The technologies involved are:
-- Python as the main programming language
-- Pandas for consuming data from CSVs files
-- Scikit-learn for building features and training ML models
-- Matplotlib and Seaborn for the visualizations
-- Jupyter notebooks to make the experimentation in an interactive way
+These files contain structured features such as demographics, financial information, and loan details.
 
-## Installation
+## 🛠️ Technologies Used
 
-A `requirements.txt` file is provided with all the needed Python libraries for running this project. For installing the dependencies just run:
+- **Python**: Main programming language
+- **Pandas**: Data manipulation
+- **Scikit-learn**: Model training and evaluation
+- **Matplotlib / Seaborn**: Data visualization
+- **Jupyter Notebook**: Interactive development
+- **Black + isort**: Code formatting
+- **Pytest**: Unit testing
 
-```console
-$ pip install -r requirements.txt
-```
+## 🧪 Project Structure
 
-*Note:* We encourage you to install those inside a virtual environment.
+.
+├── src/ # Core functions and ML code
+├── notebooks/ # Jupyter notebooks with analysis
+├── tests/ # Unit tests
+├── requirements.txt
+└── README.md
 
-## Code Style
+bash
+Copiar
+Editar
 
-Following a style guide keeps the code's aesthetics clean and improves readability, making contributions and code reviews easier. Automated Python code formatters make sure your codebase stays in a consistent style without any manual work on your end. If adhering to a specific style of coding is important to you, employing an automated to do that job is the obvious thing to do. This avoids bike-shedding on nitpicks during code reviews, saving you an enormous amount of time overall.
+## ⚙️ Installation
 
-We use [Black](https://black.readthedocs.io/) and [isort](https://pycqa.github.io/isort/) for automated code formatting in this project, you can run it with:
+Create a virtual environment and install dependencies:
 
-```console
-$ isort --profile=black . && black --line-length 88 .
-```
+```bash
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+🧪 Run Tests
+bash
+Copiar
+Editar
+pytest tests/
+🧼 Code Formatting
+To ensure consistent code style:
 
-Wanna read more about Python code style and good practices? Please see:
-- [The Hitchhiker’s Guide to Python: Code Style](https://docs.python-guide.org/writing/style/)
-- [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
+bash
+Copiar
+Editar
+isort --profile=black .
+black --line-length 88 .
+📈 Model Output
+The model outputs probability scores of loan default and is evaluated based on AUC-ROC. Visualizations and performance metrics are included in the main notebook.
 
-## Tests
-
-We provide unit tests along with the project that you can run and check from your side the code meets the minimum requirements of correctness needed to approve. To run just execute:
-
-```console
-$ pytest tests/
-```
-
-If you want to learn more about testing Python code, please read:
-- [Effective Python Testing With Pytest](https://realpython.com/pytest-python-testing/)
-- [The Hitchhiker’s Guide to Python: Testing Your Code](https://docs.python-guide.org/writing/tests/)
+This project simulates a real-world financial modeling use case and demonstrates a complete ML pipeline from preprocessing to evaluation.
